@@ -1,0 +1,26 @@
+@GetMapping(path = "/viewAll/{purchaseyear}")
+	 public Optional<Insurance> viewAll(@PathVariable int purchaseyear) {
+		return service.viewAll(purchaseyear);
+		 
+	 }
+   
+   
+   public interface InsuranceDao extends JpaRepository<Insurance,Integer> {
+	
+	@Query("select be from Insurance be where be.purchaseYear =?1")
+	Optional<Insurance> viewAll(@Param("c") int purchaseYear);
+
+}
+
+
+
+	@Override
+	public Optional<Insurance> viewAll(int purchaseyear) {
+		
+		return dao.viewAll(purchaseyear);
+	}
+
+
+
+
+public Optional<Insurance> viewAll(int purchaseYear);
